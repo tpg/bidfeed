@@ -3,10 +3,9 @@
 namespace TPG\Test;
 
 use DateTime;
-use DeepCopy\f001\B;
 use TPG\BidFeed\Builder;
-use TPG\BidFeed\Collection;
 use TPG\BidFeed\Product;
+use TPG\BidFeed\Collection;
 
 class BuilderTest extends TestCase
 {
@@ -20,7 +19,7 @@ class BuilderTest extends TestCase
         for ($i = 0; $i < $count; $i++) {
             $products[] = (new Product())
                 ->code($code = rand(1000, 2000))
-                ->name('Test Product ' . $code)
+                ->name('Test Product '.$code)
                 ->category(['Electronics', 'Laptops', 'Apple'])
                 ->price(199.95)
                 ->availableQuantity(10)
@@ -107,7 +106,7 @@ class BuilderTest extends TestCase
 
         $product = $this->createProduct()[0];
         $product->productAttributes([
-            'Brand' => 'Products Inc.'
+            'Brand' => 'Products Inc.',
         ]);
 
         $builder->products()->push($product);
@@ -124,15 +123,15 @@ class BuilderTest extends TestCase
 
         $products = $this->createProduct(2);
         $products[0]->productAttributes([
-            'Brand' => 'Products Inc.'
+            'Brand' => 'Products Inc.',
         ]);
 
         $builder->products()->push($products);
 
         $xml = simplexml_load_string($builder->toXml(__DIR__.'/test.xml'));
 
-        $this->assertEquals($products[0]->toArray()['ProductName'], (string)$xml->Products->Product[0]->ProductName);
-        $this->assertEquals($products[1]->toArray()['ProductCode'], (string)$xml->Products->Product[1]->ProductCode);
+        $this->assertEquals($products[0]->toArray()['ProductName'], (string) $xml->Products->Product[0]->ProductName);
+        $this->assertEquals($products[1]->toArray()['ProductCode'], (string) $xml->Products->Product[1]->ProductCode);
 
         $this->assertEquals('Products Inc.', $xml->Products->Product[0]->ProductAttributes->Brand);
 

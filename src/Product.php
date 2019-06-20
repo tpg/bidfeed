@@ -2,9 +2,9 @@
 
 namespace TPG\BidFeed;
 
-use TPG\BidFeed\Exceptions\MissingRequiredAttribute;
 use TPG\BidFeed\Traits\Collectable;
 use TPG\BidFeed\Traits\HasAttributes;
+use TPG\BidFeed\Exceptions\MissingRequiredAttribute;
 
 class Product
 {
@@ -64,12 +64,12 @@ class Product
     }
 
     /**
-     * Set the product code
+     * Set the product code.
      *
      * @param string $code
      * @return Product
      */
-    public function code(string $code): Product
+    public function code(string $code): self
     {
         $this->attributes['ProductCode'] = substr(strip_tags($code), 0, 100);
 
@@ -77,12 +77,12 @@ class Product
     }
 
     /**
-     * Set the product GTIN
+     * Set the product GTIN.
      *
      * @param string $gtin
      * @return Product
      */
-    public function gtin(string $gtin): Product
+    public function gtin(string $gtin): self
     {
         $this->attributes['ProductGTIN'] = strip_tags($gtin);
 
@@ -90,12 +90,12 @@ class Product
     }
 
     /**
-     * Set the product MPN
+     * Set the product MPN.
      *
      * @param string $mpn
      * @return Product
      */
-    public function mpn(string $mpn): Product
+    public function mpn(string $mpn): self
     {
         $this->attributes['ProductMPN'] = strip_tags($mpn);
 
@@ -103,12 +103,12 @@ class Product
     }
 
     /**
-     * Set a product name
+     * Set a product name.
      *
      * @param string $name
      * @return Product
      */
-    public function name(string $name): Product
+    public function name(string $name): self
     {
         $this->attributes['ProductName'] = $name;
 
@@ -116,12 +116,12 @@ class Product
     }
 
     /**
-     * Set a category
+     * Set a category.
      *
      * @param array $signature
      * @return Product
      */
-    public function category(array $signature): Product
+    public function category(array $signature): self
     {
         $this->attributes['Category'] = implode(' - ', $signature);
 
@@ -129,13 +129,13 @@ class Product
     }
 
     /**
-     * Set a selling price
+     * Set a selling price.
      *
      * @param float $price
      * @param float|null $marketPrice
      * @return Product
      */
-    public function price(float $price, float $marketPrice = null): Product
+    public function price(float $price, float $marketPrice = null): self
     {
         $this->attributes['Price'] = $price;
 
@@ -147,12 +147,12 @@ class Product
     }
 
     /**
-     * Set a market price
+     * Set a market price.
      *
      * @param float $marketPrice
      * @return Product
      */
-    public function marketPrice(float $marketPrice): Product
+    public function marketPrice(float $marketPrice): self
     {
         $this->attributes['MarketPrice'] = $marketPrice;
 
@@ -160,11 +160,11 @@ class Product
     }
 
     /**
-     * Set if offers should be allowed
+     * Set if offers should be allowed.
      * @param bool $allow
      * @return Product
      */
-    public function allowOffers($allow = true): Product
+    public function allowOffers($allow = true): self
     {
         $this->attributes['AllowOffer'] = $allow ? 'true' : 'false';
 
@@ -172,12 +172,12 @@ class Product
     }
 
     /**
-     * Set the available quantity
+     * Set the available quantity.
      *
      * @param int $quantity
      * @return Product
      */
-    public function availableQuantity(int $quantity): Product
+    public function availableQuantity(int $quantity): self
     {
         $this->attributes['AvailableQuantity'] = $quantity;
 
@@ -185,12 +185,12 @@ class Product
     }
 
     /**
-     * Set the product description
+     * Set the product description.
      *
      * @param string $condition
      * @return Product
      */
-    public function condition(string $condition): Product
+    public function condition(string $condition): self
     {
         $this->attributes['Condition'] = $condition;
 
@@ -198,24 +198,25 @@ class Product
     }
 
     /**
-     * Set a product description
+     * Set a product description.
      *
      * @param string $description
      * @return Product
      */
-    public function description(string $description): Product
+    public function description(string $description): self
     {
         $this->attributes['Description'] = substr(strip_tags($description, 'p,br'), 0, 8000);
+
         return $this;
     }
 
     /**
-     * Add images to the Product
+     * Add images to the Product.
      *
      * @param array $images
      * @return Product
      */
-    public function images(array $images): Product
+    public function images(array $images): self
     {
         $this->images = new Collection($images);
 
@@ -223,7 +224,7 @@ class Product
     }
 
     /**
-     * Get the images Collection instance
+     * Get the images Collection instance.
      *
      * @return Collection
      */
@@ -233,12 +234,12 @@ class Product
     }
 
     /**
-     * Add optional product attributes
+     * Add optional product attributes.
      *
      * @param array $attributes
      * @return Product
      */
-    public function productAttributes(array $attributes): Product
+    public function productAttributes(array $attributes): self
     {
         $this->productAttributes = new Collection($attributes);
 
@@ -254,7 +255,7 @@ class Product
     }
 
     /**
-     * Set the product guarantee type and description
+     * Set the product guarantee type and description.
      *
      * @param int $type
      * @param string $text
@@ -269,7 +270,7 @@ class Product
     }
 
     /**
-     * Set the product warranty type and description
+     * Set the product warranty type and description.
      *
      * @param int $type
      * @param string $text
@@ -310,7 +311,7 @@ class Product
     }
 
     /**
-     * Verify the images
+     * Verify the images.
      *
      * @throws MissingRequiredAttribute
      */
@@ -322,7 +323,7 @@ class Product
     }
 
     /**
-     * Return the product as an array
+     * Return the product as an array.
      *
      * @return array
      */
@@ -334,7 +335,7 @@ class Product
     }
 
     /**
-     * Add attributes to the XML element
+     * Add attributes to the XML element.
      *
      * @param \DOMNode $node
      * @param array|null $attributes
@@ -342,9 +343,7 @@ class Product
     protected function addAttributesToXmlElement(\DOMNode $node, array $attributes = null)
     {
         foreach ($attributes as $key => $value) {
-
             if ($value) {
-
                 $productNode = new \DOMElement($key);
 
                 $node->appendChild($productNode);
@@ -352,27 +351,21 @@ class Product
                 if (is_array($value)) {
                     $this->addAttributesToXmlElement($productNode, $value);
                 } else {
-
                     if (in_array($key, $this->textFields)) {
-
                         $value = $node->ownerDocument->createCDATASection($value);
                         $productNode->appendChild($value);
-
                     } else {
-
                         $productNode->textContent = $value;
-
                     }
 
                     $node->appendChild($productNode);
                 }
             }
-
         }
     }
 
     /**
-     * Add images to the XML element
+     * Add images to the XML element.
      *
      * @param \DOMNode $node
      */
@@ -386,12 +379,11 @@ class Product
             $imagesNode->appendChild($imageNode);
             $value = $node->ownerDocument->createCDATASection($image);
             $imageNode->appendChild($value);
-
         }
     }
 
     /**
-     * Add the product attributes to the XML element
+     * Add the product attributes to the XML element.
      *
      * @param \DOMNode $node
      */

@@ -30,12 +30,12 @@ class Builder
     }
 
     /**
-     * Set the "plugin" version number
+     * Set the "plugin" version number.
      *
      * @param string $version
      * @return Builder
      */
-    public function version(string $version): Builder
+    public function version(string $version): self
     {
         $this->version = $version;
 
@@ -43,12 +43,12 @@ class Builder
     }
 
     /**
-     * Set the time the feed was created
+     * Set the time the feed was created.
      *
      * @param DateTime $created
      * @return Builder
      */
-    public function created(DateTime $created): Builder
+    public function created(DateTime $created): self
     {
         $this->created = $created;
 
@@ -89,11 +89,8 @@ class Builder
 
         $this->products->toXml($root);
 
-
         if ($filename) {
-
             $document->save($filename);
-
         }
 
         return $document->saveXML();
