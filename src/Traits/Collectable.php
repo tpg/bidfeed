@@ -5,8 +5,7 @@ namespace TPG\BidFeed\Traits;
 use TPG\BidFeed\Collection;
 
 /**
- * Trait Collectable
- * @package TPG\BidFeed\Traits
+ * Trait Collectable.
  */
 trait Collectable
 {
@@ -16,7 +15,7 @@ trait Collectable
     protected $parent;
 
     /**
-     * Set or get the parent collection
+     * Set or get the parent collection.
      *
      * @param Collection|null $collection
      * @return Collection|null
@@ -33,9 +32,7 @@ trait Collectable
     public function delete()
     {
         if ($this->parent) {
-
             $this->parent->delete($this);
-
         }
     }
 }

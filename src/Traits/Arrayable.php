@@ -5,7 +5,7 @@ namespace TPG\BidFeed\Traits;
 trait Arrayable
 {
     /**
-     * Check if an item exists
+     * Check if an item exists.
      *
      * @param mixed $offset
      * @return bool
@@ -16,7 +16,7 @@ trait Arrayable
     }
 
     /**
-     * Get an item
+     * Get an item.
      *
      * @param mixed $offset
      * @return mixed
@@ -27,7 +27,7 @@ trait Arrayable
     }
 
     /**
-     * Get an item
+     * Get an item.
      *
      * @param mixed $offset
      * @param mixed $value
@@ -42,7 +42,7 @@ trait Arrayable
     }
 
     /**
-     * Remove an item
+     * Remove an item.
      *
      * @param mixed $offset
      */
