@@ -1,4 +1,7 @@
 # BidFeed
+
+[![Build Status](https://travis-ci.org/tpg/bidfeed.svg?branch=master)](https://travis-ci.org/tpg/bidfeed)
+
 __Bid or Buy XML Feed Library__
 
 BidFeed is an XML generator for the Bid or Buy XML feed.
