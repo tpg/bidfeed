@@ -11,7 +11,6 @@ class Collection implements ArrayAccess, Countable, \Iterator
 {
     use Arrayable, Iteratable;
 
-
     /**
      * @var array
      */
@@ -27,7 +26,7 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Count the collection items
+     * Count the collection items.
      *
      * @return int
      */
@@ -37,7 +36,7 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Check if a key exists in the collection
+     * Check if a key exists in the collection.
      *
      * @param $key
      * @return bool
@@ -48,7 +47,7 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Get the first item in the collection
+     * Get the first item in the collection.
      *
      * @return mixed|null
      */
@@ -60,7 +59,7 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Get the last item in the collection
+     * Get the last item in the collection.
      *
      * @return mixed|null
      */
@@ -72,7 +71,7 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Find an item by its key
+     * Find an item by its key.
      *
      * @param mixed $key
      * @return mixed|null
@@ -83,14 +82,14 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Push an item onto the collection
+     * Push an item onto the collection.
      *
      * @param $item
      * @return $this
      */
     public function push($item)
     {
-        if (!is_array($item)) {
+        if (! is_array($item)) {
             $item = [$item];
         }
         $this->items = array_merge($this->items, $item);
@@ -101,7 +100,7 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Insert an item at the top of the collection
+     * Insert an item at the top of the collection.
      *
      * @param $item
      * @return $this
@@ -114,7 +113,7 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Pop the last item off the collection
+     * Pop the last item off the collection.
      *
      * @return mixed
      */
@@ -124,7 +123,7 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Shift the first item off the top of the collection
+     * Shift the first item off the top of the collection.
      *
      * @return mixed
      */
@@ -134,7 +133,7 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Delete an item from the collection
+     * Delete an item from the collection.
      *
      * @param $item
      */
@@ -148,7 +147,7 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Loop other each item in the collection
+     * Loop other each item in the collection.
      *
      * @param callable $callback
      */
@@ -160,12 +159,12 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Loop over each item in the collection and apply the result of the callback
+     * Loop over each item in the collection and apply the result of the callback.
      *
      * @param callable $callback
      * @return Collection
      */
-    public function map(callable $callback): Collection
+    public function map(callable $callback): self
     {
         $items = [];
         foreach ($this->items as $item) {
@@ -176,12 +175,12 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Filter the items in the collection by the result of the callback
+     * Filter the items in the collection by the result of the callback.
      *
      * @param callable $callback
      * @return Collection
      */
-    public function filter(callable $callback): Collection
+    public function filter(callable $callback): self
     {
         $items = [];
         foreach ($this->items as $item) {
@@ -194,7 +193,7 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Return array of collected items
+     * Return array of collected items.
      *
      * @return array
      */
@@ -203,7 +202,7 @@ class Collection implements ArrayAccess, Countable, \Iterator
         return [
             'Products' => array_map(function (Product $product) {
                 return $product->toArray();
-            }, $this->items)
+            }, $this->items),
         ];
     }
 
@@ -225,7 +224,7 @@ class Collection implements ArrayAccess, Countable, \Iterator
     }
 
     /**
-     * Update the parent on collected items
+     * Update the parent on collected items.
      */
     protected function updateParent()
     {

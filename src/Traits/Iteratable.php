@@ -5,7 +5,7 @@ namespace TPG\BidFeed\Traits;
 trait Iteratable
 {
     /**
-     * Get the current item
+     * Get the current item.
      *
      * @return mixed
      */
@@ -15,7 +15,7 @@ trait Iteratable
     }
 
     /**
-     * Move to the next item
+     * Move to the next item.
      *
      * @return mixed
      */
@@ -25,7 +25,7 @@ trait Iteratable
     }
 
     /**
-     * Return the key of the current item
+     * Return the key of the current item.
      *
      * @return int|string|null
      */
@@ -35,18 +35,19 @@ trait Iteratable
     }
 
     /**
-     * Check if the current item position is valid
+     * Check if the current item position is valid.
      *
      * @return bool
      */
     public function valid()
     {
         $key = key($this->items);
+
         return $key !== null && $key !== false;
     }
 
     /**
-     * Reset the iterator to the start position
+     * Reset the iterator to the start position.
      */
     public function rewind()
     {
