@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.2] - 2019-06-24
+### Fixed
+- Fixed a bug in the `Builder->toXml()` that caused an error when no collection had been added.
+
 ## [0.0.1] - 2019-06-20
 - Add products to an XML feed builder.
 - Render the feed as an array.

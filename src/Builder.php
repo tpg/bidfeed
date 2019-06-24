@@ -87,7 +87,7 @@ class Builder
         $this->addVersionNode($root);
         $this->addCreatedNode($root);
 
-        $this->products->toXml($root);
+        $this->products()->toXml($root);
 
         if ($filename) {
             $document->save($filename);
