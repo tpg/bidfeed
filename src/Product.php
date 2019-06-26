@@ -59,7 +59,7 @@ class Product
             'Price',
             'ProductName',
             'ProductCode',
-            'AvailableQuantity',
+            'AvailableQty',
         ];
     }
 
@@ -179,7 +179,7 @@ class Product
      */
     public function availableQuantity(int $quantity): self
     {
-        $this->attributes['AvailableQuantity'] = $quantity;
+        $this->attributes['AvailableQty'] = $quantity;
 
         return $this;
     }
